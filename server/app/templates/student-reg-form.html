@@ -59,7 +59,7 @@
 
   <h2>Student Registration</h2>
 
-  <form action="" method="POST">
+  <form action="{{ url_for('auth.registrationStudents') }}" method="POST">
     <label>Full Name</label>
     <input type="text" name="full_name" required>
 
@@ -77,9 +77,6 @@
 
     <label>Admission Date</label>
     <input type="date" name="admission_date" required>
-
-    <label>Room Number</label>
-    <input type="text" name="room_number" required>
 
     <label>Emergency Contact Name</label>
     <input type="text" name="emergency_contact_name" required>
