@@ -15,6 +15,8 @@ def create_app():
     
     db.init_app(app)
     
+    app.config['UPLOAD_FOLDER'] = '/Users/amalv/Documents/HOSTEL-APP/server/app/static/uploads'
+    
     app.secret_key = "1234"
     app.register_blueprint(auth_bp)
 

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      padding: 40px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
+      padding: 25px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Warden Registration</h2>
+
+  <form action="{{ url_for('auth.registrationWardens') }}" method="POST" enctype="multipart/form-data">
+    <label>Full Name</label>
+    <input type="text" name="full_name" required>
+
+    <label>Email</label>
+    <input type="email" name="email" required>
+
+    <label>Phone Number</label>
+    <input type="text" name="phone_number" required>
+
+    <label>Date of Birth</label>
+    <input type="date" name="date_of_birth" required>
+
+    <label>Address</label>
+    <textarea name="address" rows="3" required></textarea>
+
+    <label>Resume (PDF or DOCX)</label>
+    <input type="file" name="resume" accept=".pdf,.doc,.docx" required>
+
+    <label>Photo URL</label>
+    <input type="url" name="photo_url" required>
+
+    <label>Password</label>
+    <input type="password" name="password" required>
+
+    <button type="submit">Register</button>
+  </form>
+
+</body>
+</html>
