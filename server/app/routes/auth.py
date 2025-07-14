@@ -7,6 +7,9 @@ from flask import current_app
 from app.extensions import db
 import bcrypt 
 from werkzeug.utils import secure_filename
+from flask_login import logout_user, login_user, login_required, current_user
+
+
 auth_bp = Blueprint('auth',__name__)
 
 
@@ -28,6 +31,20 @@ auth_bp = Blueprint('auth',__name__)
 
 #     return 'Admin user created successfully with username: admin@gmail.com and password: admin123'
 
+from flask import make_response
+from functools import wraps
+
+def nocache(view):
+    @wraps(view)
+    def no_cache(*args, **kwargs):
+        response = make_response(view(*args, **kwargs))
+        response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+        response.headers['Pragma'] = 'no-cache'
+        response.headers['Expires'] = '0'
+        return response
+    return no_cache
+
+
 def login_required(func):
     @functools.wraps(func)
     def secure_function():
@@ -35,6 +52,10 @@ def login_required(func):
             return 'login not success'
         return func()
     return secure_function
+
+
+
+
 
 #? ------------login route----------------
 
@@ -64,7 +85,7 @@ def login():
                 #? check if the user is admin
                 if user.user_type == 'admin':
                     session['lid'] = user.logid
-                    return 'login successful',200
+                    return redirect(url_for('auth.adminDash'))
                 
                 #? check if the user is warden 
                 elif user.user_type == 'warden':
@@ -187,3 +208,11 @@ def registrationWardens():
 
     except ValueError as ve:
         return {'error':str(ve)},401
+    
+#? ------------admin dashboard----------------
+@auth_bp.route('/adminDash',methods=['GET','POST'])
+@login_required
+@nocache
+def adminDash():
+    return render_template('admin-dashboard.html')
+

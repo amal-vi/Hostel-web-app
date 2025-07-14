@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+        }
+
+        .sidebar {
+            position: fixed;
+            width: 220px;
+            height: 100%;
+            background-color: #2c3e50;
+            padding-top: 20px;
+            color: white;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 12px 20px;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #34495e;
+        }
+
+        .header {
+            margin-left: 220px;
+            padding: 20px;
+            background-color: #34495e;
+            color: white;
+        }
+
+        .main {
+            margin-left: 220px;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+        }
+
+        .stats .card {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>Admin</h2>
+        <a href="#">Dashboard</a>
+        <a href="#">Users</a>
+        <a href="#">Settings</a>
+        <a href="#">Reports</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <div class="header">
+        <h1>Admin Dashboard</h1>
+    </div>
+
+    <div class="main">
+        <div class="stats">
+            <div class="card">
+                <h3>Users</h3>
+                <p>1,024</p>
+            </div>
+            <div class="card">
+                <h3>Sales</h3>
+                <p>$5,230</p>
+            </div>
+            <div class="card">
+                <h3>Performance</h3>
+                <p>85%</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Recent Activity</h3>
+            <p>No recent activity to show.</p>
+        </div>
+    </div>
+
+</body>
+</html>
